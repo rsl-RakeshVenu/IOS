@@ -1,0 +1,115 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. Read about difference between struct and class and explain in few lines
+---------
+Solution:
+---------
+          In Swift, structs are value types whereas classes are reference types. When you copy a struct, you end up with two unique copies of the data.
+          When you copy a class, you end up with two references to one instance of the data. It's a crucial difference, and it affects your choice between classes or structs.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Write a function that takes an Integer array as an input and returns sum of all even numbers and sum of all Odd numbers in it.
+---------
+Solution:
+---------
+func Add(array: [Int]) -> (Odd: Int, Even: Int) {
+    var Odd : Int = 0
+    var Even : Int = 0
+    for Numbers in array {
+        if(Numbers%2 != 0){
+            Even += Numbers
+        }
+        if(Numbers%2 == 0){
+            Odd += Numbers
+        }
+    }
+   return(Even, Odd)
+
+}
+
+var A = [1,2,3,4,5,6,7,8]
+var Sum = Add(array: A)
+print("Sum of all Even Numbers : ",Sum.Even)
+print("Sum of all Odd Numbers : ",Sum.Odd)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Write a function that can take precisely 0, 1 or 2 string parameters and returns the function parameters concatenated as String. if no parameter is passed return “none”.
+---------
+Solution:
+---------
+func str(_ string1: String = "" ,_ string2: String = "" ) -> String{
+    if(string1 == "" && string2 == "")
+    {
+     return "none"
+     }
+     else {
+         return("\(string1) \(string2) ")
+     }
+}
+let string1=""
+let string2=""
+print(str(string1,string2))
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Write an extended function of Array named “moveElementToBackFromIndex(:)” which will move the element at given index to the end of the array and return the array.
+---------
+Solution:
+---------
+extension Array {
+   func moveElementToBackFromIndex(_ A: Int) -> [Element] {
+     var array = self
+     let value = array[A]
+     let b = array.count - 1
+     array.remove (at: A)
+     array.insert(value, at: b)
+     return array
+   }
+}
+let arr = [5,2,3,4]
+print(arr.moveElementToBackFromIndex(1))
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+6. Read about access levels in Swift : public, open, internal, fileprivate, private and explain in few lines with examples
+---------
+Solution:
+---------
+ open(least restrictive):
+        Enable an entity to be used outside the defining module (target).
+          Example:
+                   -----------------------------------------------------
+                    open class UITableView : UIScrollView, NSCoding { }
+                   -----------------------------------------------------
+                    Since it is open, we can subclass it from our ViewController and use it.
+ public(least restrictive):
+         Like open access level, public access level enable an entity to be used outside the defining module (target). 
+         But open access level allows us to subclass it from another module where in public access level, we can only subclass or overridde it from within the module it is defined.
+           Example:
+                   -----------------------------------
+                   //Module 1
+                   public func A(){}
+                   open func B(){}
+                   //Module 2 
+                   override func A(){} // error
+                   override func B(){} // success
+                   ----------------------------------
+            Here, Method A declared in module 1 as a public method cannot be accessed from module 2.It gives error . But Method B declared in module 1 as an open method can be accessed from module 2.
+            So by keeping it simple, open access applies only to classes and class members, and it differs from publicaccess.
+ internal (default access level):
+          internal is the default access level. Internal classes and members can be accessed anywhere within the same module(target) they are defined. You typically use internalaccess when defining an app’s or a framework’s internal structure.
+ fileprivate: 
+           Restricts the use of an entity to its defining source file. You typically use fileprivate access to hide the implementation details of a specific piece of functionality when those details are used within an entire file. ie; the functionality defined with a fileprivate access level can only be accessed from within the swift file where it is defined.
+ private — (most restrictive)
+          Private access restricts the use of an entity to the enclosing declaration, and to extensions of that declaration that are in the same file. You typically use private access to hide the implementation details of a specific piece of functionality when those details are used only within a single declaration.
+             Example:
+                  -------------------------------
+                  // A.swift
+                  class A {
+                  private var name = "First Letter"
+                  }
+                  extension A {
+                  func printName(){
+                  print(name) // you may access it here from swift 4. Swift 3 will throw error.
+                  }
+                  }
+                  A() 
+                  A().name // Error even if accessed from outside the class A{} of A.swift file.
+                  ---------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
