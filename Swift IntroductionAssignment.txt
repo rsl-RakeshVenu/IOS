@@ -1,0 +1,174 @@
+                                                             Introduction of Swift Assignment
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.Read about Sets in Swift.Explain the main functions of Set and give a couple of examples of usage.
+---------
+Solution:
+---------
+     A set is a collection of unique data. That is, elements of a set cannot be duplicate. There are some methods of set we can use in swift such as
+  ------                 --------------
+  Method                  Description
+  ------                 --------------
+ insert()           Add the specified element to a set
+ remove()           Remove the specified element from a set
+ removeFirst()      Remove the first element of a set
+ removeAll()        Remove all elements of a set
+ sorted()           Sorts set elements
+ forEach()          Performs the specified actions on each element
+ contains()         Searches the specified element in a set
+ randomElement()    Returns a random element from the set
+ firstIndex()       Returns the index of the given element
+
+For example,
+ var employeeID: Set = [21, 34, 54, 12]
+ print("Initial Set: \(employeeID)")
+ // using insert method
+ numbers.insert(32)
+ print("Updated Set: \(numbers)") 
+
+Output
+
+ Initial Set: [54, 21, 34, 12]
+ Updated Set: [54, 21, 34, 12, 32]
+
+ In the above example, we have created a set named employeeID. Notice the line,
+ numbers.insert(32)
+ Here, insert() adds 32 to our set.
+
+For example,
+ var languages: Set = ["Swift", "Java", "Python"]
+ print("Initial Set: \(languages)")
+ // remove Java from a set
+ let removedValue = languages.remove("Java")
+ print("Set after remove(): \(languages)")
+
+Output
+ Initial Set: ["Python", "Java", "Swift"]
+ Set after remove(): ["Python", "Swift"]
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.Read about Range operators in Swift. Give a couple of examples of usage.
+---------
+Solution:
+---------
+In Swift, a range is a series of values between two numeric intervals. For example,
+
+var numbers = 1...4
+Here,
+... is a range operator
+1...4 contains values 1, 2, 3, 4
+1 is lower bound (first element)
+4 is upper bound (last element)
+
+Types of Range in Swift
+In Swift, there are three types of range:
+i)Closed Range
+ii)Half-Open Range
+iii)One-Sided Range
+
+ i. Closed Range
+A closed range includes all the values in the interval from the lower bound to the upper bound.
+It is declared using the ... (3 dots) operator. For example,
+// 1...4 is close range
+for numbers in 1...4 {
+  print(numbers)
+}
+Output
+1
+2
+3
+4
+
+In the above example, we have created a closed range 1...4.
+Since it is a closed range, it contains all the numbers between 1 to 4 including the lower bound (1) and upper bound (4).
+Here, we have used the Swift for loop to access all the values in the range.
+
+ ii. Half-Open Range
+A half-open range includes all the values from the lower bound to the upper bound. However, it excludes the upper bound (last number).
+It is declared using the ..< operator. For example,
+for numbers in 1..<4 {
+  print(numbers)
+}
+Output
+1
+2
+3
+In the above example, we have created a half-open range 1..<4. Since it is a half-open range, it excludes the upper bound element 4.
+
+ iii. One-sided Range
+We can create a one-sided range using either of the ... or the ..< operator.
+A one-sided range contains elements up to infinite in one direction. For example,
+let range1 = ..<2
+Here, ...<2 is a one-sided range. It contains all elements from 2 to -∞. Similarly, the range
+let range2 = 2...
+
+contains all elements from 2 to +∞.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.Consider two Strings constant which can hold empty string (“”).
+  In case both the string constants are empty strings then the function should print “none” otherwise the function should print the combination of both the string constants.
+---------
+Solution:
+---------
+let x="Hi!",y="Team"
+print(x==""&&y=="" ? "none":"\(x) \(y)")
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.Consider a constant which is an array of integers. Print elements of the array such that no value should be printed more than once.
+---------
+Solution:
+---------
+let Elements : Set<Int>=[1,2,3,4,5,6,7,6,5,4,3,2,1]
+print(Elements.sorted())
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5.Consider a constant which is an array of integers and print all its odd numbers and even numbers separately. (Use switch statements)
+---------
+Solution:
+---------
+let Numbers=[45,98,1009]
+var a:Array<Int>=[]
+var b:Array<Int>=[]
+var i=0
+for index in Numbers
+{
+    i = index % 2 == 1 ? 1 : 2
+switch i {
+    case 1:a.append(index)
+    case 2:b.append(index)
+    default:print("Default")
+}
+}
+print("Odd Numbers:\(a)")
+print("Even Numbers:\(b)")
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6.Consider an integer array. Also consider three integers “x”, “y” and “z”. Value of “x” can only be 0 and 1, and if the value of “x” is 0 then print the sum of elements in the array ranging from index “y” to “z”. 
+  Both elements at “y” and “z” will be included in the range. And if the value of x is 1 then insert the integer “z” at “y” index and print all elements of the array.
+---------
+Solution:
+---------
+var numbers=[2,4,1,5,1,8,6,4]
+var x : Int = 0
+var y : Int = 2
+var z : Int = 4
+var sum : Int = 0
+if(x==0)
+{
+    for index in numbers[y...z]
+    {
+        sum = sum + index
+    }
+    print(sum)
+}
+else
+{
+    numbers.insert(z, at : y)
+    print(numbers)
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
